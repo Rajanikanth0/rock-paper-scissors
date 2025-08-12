@@ -17,6 +17,6 @@ Show choosen item at the same time.
  - Show the item at the same time
  - Compare to decide the winner
 
-Language: Javascript
-Platform: Browser console
-Connection: Offline
+> Language: Javascript
+> Platform: Browser console
+> Connection: Offline
