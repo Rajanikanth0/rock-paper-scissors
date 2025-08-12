@@ -31,6 +31,36 @@
         // Initialize starting score in global scope
         let humanScore = 0;
         let computerScore = 0;
+
+        // Write the logic to play a single round
+
+        function playRound(humanChoice, computerChoice) {
+            // Convert to case-insensitive
+            humanChoice = humanChoice.toLowerCase();
+
+            // Comparision
+            if (humanChoice == computerChoice) {
+                console.log("Both are same, no points!");
+
+            } else if (
+                humanChoice == 'rock' && computerChoice == 'scissors' ||
+                humanChoice == 'paper' && computerChoice == 'rock' ||
+                humanChoice == 'scissors' && computerChoice == 'paper'
+            ) {
+                console.log(`You lose! ${humanChoice} beats ${computerChoice}`);
+                humanScore += 1;
+
+            } else {
+                console.log(`You lose! ${computerChoice} beats ${humanChoice}`);
+                computerScore += 1;
+            }
+        }
+
+        // Get human and computer choices
+        const humanSelection = getHumanChoice();
+        const computerSelection = getComputerChoice();
+
+        playRound(humanSelection, computerSelection);
     </script>
 </body>
 </html>
