@@ -6,6 +6,25 @@
     <title>Document</title>
 </head>
 <body>
-    <script></script>
+    <script>
+        // Write logic to get the computer choice
+
+        function getComputerChoice() {
+
+            // Get a random value between 0 to 2;
+            const randomNumber = Math.floor(Math.random() * 3);
+
+            // Convert number to string
+            switch (randomNumber) {
+                case 0: return 'Rock';
+                case 1: return 'Paper';
+                case 2: return 'Scissors';
+            }
+
+        }
+
+        const computerChoice = getComputerChoice();
+        
+    </script>
 </body>
 </html>
