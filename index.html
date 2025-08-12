@@ -7,32 +7,26 @@
 </head>
 <body>
     <script>
-        // Write logic to get the computer choice
+        // Write the logic to get the computer choice
 
         function getComputerChoice() {
-
             // Get a random value between 0 to 2;
             const randomNumber = Math.floor(Math.random() * 3);
 
             // Convert number to string
             switch (randomNumber) {
-                case 0: return 'Rock';
-                case 1: return 'Paper';
-                case 2: return 'Scissors';
+                case 0: return 'rock';
+                case 1: return 'paper';
+                case 2: return 'scissors';
             }
-
         }
+
+        // Write the logic to get the human choice
 
         function getHumanChoice() {
-            
-            // Get the user input
-            const userInput = prompt("Rock, Paper, Scissors?");
-
-            return userInput;
+            // Get the user input then Return it
+            return prompt("Rock, Paper, Scissors?");
         }
-
-        // const computerChoice = getComputerChoice();
-        const humanChoice = getHumanChoice();
     </script>
 </body>
 </html>
