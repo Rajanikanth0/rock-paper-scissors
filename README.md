@@ -17,6 +17,9 @@ Show choosen item at the same time.
  - Show the item at the same time
  - Compare to decide the winner
 
+## Score
+The player-score who wins will be increased by 1 point.
+
 > Language: Javascript
 > Platform: Browser console
 > Connection: Offline
