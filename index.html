@@ -30,13 +30,6 @@
             }
         }
 
-        // Write the logic to get the human choice
-
-        function getHumanChoice() {
-            // Get the user input then Return it
-            return prompt("Rock, Paper, Scissors?");
-        }
-
         function playGame() {
             // Initialize starting score
             let humanScore = 0;
@@ -64,6 +57,7 @@
                 }
             }
 
+            // Write logic to get user Choice
             const rps_container = document.querySelector("#rps-container");
 
             rps_container.addEventListener("click", function(e) {
@@ -85,7 +79,5 @@
 
         playGame();
     </script>
-    
-    <h1>See the results in console panel</h1>
 </body>
 </html>
