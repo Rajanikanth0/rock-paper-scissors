@@ -13,7 +13,7 @@
         <button id="scissors">Scissors</button>
     </div>
 
-    <div id="results"></div>
+    <div id="results" style="margin-top: 10px"></div>
 
     <script>
         // Write the logic to get the computer choice
@@ -34,8 +34,10 @@
             // Initialize starting score
             let humanScore = 0;
             let computerScore = 0;
+            const winningScore = 5;
 
             // Write the logic to play a single round
+            const rps_container = document.querySelector("#rps-container");
             const results = document.querySelector("#results");
 
             function playRound(humanChoice, computerChoice) {
@@ -55,12 +57,21 @@
                     results.textContent = `Human lose! ${computerChoice} beats ${humanChoice}`;
                     computerScore += 1;
                 }
+
+                // Check for winner
+                if (computerScore >= winningScore) {
+                    results.textContent = `Computer won the game with ${computerScore} | ${humanScore} points`;
+                    rps_container.removeEventListener("click", getChoice);
+                }
+                if (humanScore >= winningScore) {
+                    results.textContent = `Computer won the game with ${humanScore} | ${computerScore} points`;
+                    rps_container.removeEventListener("click", getChoice);
+                }
             }
 
             // Write logic to get user Choice
-            const rps_container = document.querySelector("#rps-container");
 
-            rps_container.addEventListener("click", function(e) {
+            function getChoice(e) {
                 const computer_choice = getComputerChoice();
 
                 switch (e.target.id) {
@@ -68,13 +79,9 @@
                     case "paper": playRound("paper", computer_choice); break;
                     case "scissors": playRound("scissors", computer_choice); break;
                 }
+            }
 
-                if (computerScore >= 5) {
-                    results.textContent = `Computer won the game with ${computerScore} / ${humanScore} points`;
-                } else if (humanScore >= 5) {
-                    results.textContent = `Computer won the game with ${humanScore} / ${computerScore} points`;
-                }
-            });
+            rps_container.addEventListener("click", getChoice);
         }
 
         playGame();
