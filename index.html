@@ -6,6 +6,13 @@
     <title>Document</title>
 </head>
 <body>
+
+    <div id="rps-container">
+        <button id="rock">Rock</button>
+        <button id="paper">Paper</button>
+        <button id="scissors">Scissors</button>
+    </div>
+
     <script>
         // Write the logic to get the computer choice
 
@@ -56,28 +63,17 @@
                 }
             }
 
-            let humanSelection, computerSelection;
+            const rps_container = document.querySelector("#rps-container");
 
-            // Play 5 rounds
-            humanSelection = getHumanChoice();
-            computerSelection = getComputerChoice();
-            playRound(humanSelection, computerSelection);
+            rps_container.addEventListener("click", function(e) {
+                const comp_choice = getComputerChoice();
 
-            humanSelection = getHumanChoice();
-            computerSelection = getComputerChoice();
-            playRound(humanSelection, computerSelection);
-            
-            humanSelection = getHumanChoice();
-            computerSelection = getComputerChoice();
-            playRound(humanSelection, computerSelection);
-
-            humanSelection = getHumanChoice();
-            computerSelection = getComputerChoice();
-            playRound(humanSelection, computerSelection);
-
-            humanSelection = getHumanChoice();
-            computerSelection = getComputerChoice();
-            playRound(humanSelection, computerSelection);
+                switch (e.target.id) {
+                    case "rock": playRound("rock", comp_choice); break;
+                    case "paper": playRound("paper", comp_choice); break;
+                    case "scissors": playRound("scissors", comp_choice); break;
+                }
+            })
 
             // Calculate the winner
             if (computerScore > humanScore) {
