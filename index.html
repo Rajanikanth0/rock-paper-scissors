@@ -13,6 +13,8 @@
         <button id="scissors">Scissors</button>
     </div>
 
+    <div id="results"></div>
+
     <script>
         // Write the logic to get the computer choice
 
@@ -41,24 +43,23 @@
             let computerScore = 0;
 
             // Write the logic to play a single round
-            function playRound(humanChoice, computerChoice) {
-                // Convert to case-insensitive
-                humanChoice = humanChoice.toLowerCase();
+            const results = document.querySelector("#results");
 
+            function playRound(humanChoice, computerChoice) {
                 // Comparision
                 if (humanChoice == computerChoice) {
-                    console.log(`Both are ${computerChoice}, no points!`);
+                    results.textContent = `Both are ${computerChoice}, no points!`;
 
                 } else if (
                     humanChoice == 'rock' && computerChoice == 'scissors' ||
                     humanChoice == 'paper' && computerChoice == 'rock' ||
                     humanChoice == 'scissors' && computerChoice == 'paper'
                 ) {
-                    console.log(`Computer lose! ${humanChoice} beats ${computerChoice}`);
+                    results.textContent = `Computer lose! ${humanChoice} beats ${computerChoice}`;
                     humanScore += 1;
 
                 } else {
-                    console.log(`Human lose! ${computerChoice} beats ${humanChoice}`);
+                    results.textContent = `Human lose! ${computerChoice} beats ${humanChoice}`;
                     computerScore += 1;
                 }
             }
@@ -66,23 +67,20 @@
             const rps_container = document.querySelector("#rps-container");
 
             rps_container.addEventListener("click", function(e) {
-                const comp_choice = getComputerChoice();
+                const computer_choice = getComputerChoice();
 
                 switch (e.target.id) {
-                    case "rock": playRound("rock", comp_choice); break;
-                    case "paper": playRound("paper", comp_choice); break;
-                    case "scissors": playRound("scissors", comp_choice); break;
+                    case "rock": playRound("rock", computer_choice); break;
+                    case "paper": playRound("paper", computer_choice); break;
+                    case "scissors": playRound("scissors", computer_choice); break;
                 }
-            })
 
-            // Calculate the winner
-            if (computerScore > humanScore) {
-                console.log(`Computer won the game with ${computerScore} points`);
-            } else if (computerScore < humanScore) {
-                console.log(`Human won the game with ${humanScore} points`);
-            } else {
-                console.log(`Both have ${computerScore} points!`);
-            }
+                if (computerScore >= 5) {
+                    results.textContent = `Computer won the game with ${computerScore} / ${humanScore} points`;
+                } else if (humanScore >= 5) {
+                    results.textContent = `Computer won the game with ${humanScore} / ${computerScore} points`;
+                }
+            });
         }
 
         playGame();
