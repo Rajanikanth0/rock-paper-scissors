@@ -41,36 +41,45 @@
             const results = document.querySelector("#results");
 
             function playRound(humanChoice, computerChoice) {
+                const text = document.createElement("code");
+                text.style.display = "block";
+
                 // Comparision
                 if (humanChoice == computerChoice) {
-                    results.textContent = `Both are ${computerChoice}, no points!`;
+                    text.textContent = `Both are ${computerChoice}, no points!`;
 
                 } else if (
                     humanChoice == 'rock' && computerChoice == 'scissors' ||
                     humanChoice == 'paper' && computerChoice == 'rock' ||
                     humanChoice == 'scissors' && computerChoice == 'paper'
                 ) {
-                    results.textContent = `Computer lose! ${humanChoice} beats ${computerChoice}`;
+                    text.textContent = `Computer lose! ${humanChoice} beats ${computerChoice}`;
                     humanScore += 1;
 
                 } else {
-                    results.textContent = `Human lose! ${computerChoice} beats ${humanChoice}`;
+                    text.textContent = `Human lose! ${computerChoice} beats ${humanChoice}`;
                     computerScore += 1;
                 }
 
                 // Check for winner
                 if (computerScore >= winningScore) {
-                    results.textContent = `Computer won the game with ${computerScore} | ${humanScore} points`;
+                    text.style.color = "orange";
+                    text.textContent = `Computer won the game with ${computerScore} | ${humanScore} points`;
+
                     rps_container.removeEventListener("click", getChoice);
                 }
                 if (humanScore >= winningScore) {
-                    results.textContent = `Computer won the game with ${humanScore} | ${computerScore} points`;
+                    text.style.color = "orange";
+                    text.textContent = `Computer won the game with ${humanScore} | ${computerScore} points`;
+
                     rps_container.removeEventListener("click", getChoice);
                 }
+
+                // Show result
+                results.append(text);
             }
 
             // Write logic to get user Choice
-
             function getChoice(e) {
                 const computer_choice = getComputerChoice();
 
