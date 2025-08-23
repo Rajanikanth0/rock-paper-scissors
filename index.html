@@ -61,22 +61,32 @@
                     computerScore += 1;
                 }
 
+                // Show result
+                results.append(text);
+
                 // Check for winner
                 if (computerScore >= winningScore) {
+                    const text = document.createElement("code");
+                    text.style.display = "block";
                     text.style.color = "orange";
                     text.textContent = `Computer won the game with ${computerScore} | ${humanScore} points`;
+
+                    // Show result
+                    results.append(text);
 
                     rps_container.removeEventListener("click", getChoice);
                 }
                 if (humanScore >= winningScore) {
+                    const text = document.createElement("code");
+                    text.style.display = "block";
                     text.style.color = "orange";
-                    text.textContent = `Computer won the game with ${humanScore} | ${computerScore} points`;
+                    text.textContent = `Human won the game with ${humanScore} | ${computerScore} points`;
+
+                    // Show result
+                    results.append(text);
 
                     rps_container.removeEventListener("click", getChoice);
                 }
-
-                // Show result
-                results.append(text);
             }
 
             // Write logic to get user Choice
